@@ -326,20 +326,19 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
     }
 
     /// Returns the bounding box of the shape.
-    open var bounds: CGRect {
+    open var objectBounds: CGRect {
         return CGRect(x: 0, y: 0, width: size.width, height: -size.height)
     }
-
+    
     /// Returns the object anchor point (based on the current map's tile size).
     open var anchorPoint: CGPoint {
         guard let layer = layer else { return .zero }
-
         if (gid != nil) {
             let tileAlignmentX = layer.tilemap.tileWidthHalf
             let tileAlignmentY = layer.tilemap.tileHeightHalf
             return CGPoint(x: tileAlignmentX, y: tileAlignmentY)
         }
-        return bounds.center
+        return objectBounds.center
     }
 
     /// Signifies that this object is a text or tile object.
