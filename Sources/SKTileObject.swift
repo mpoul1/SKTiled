@@ -683,7 +683,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
                 let finalScaleValue: CGFloat = (1 / renderQuality) / uiScale
                 textSprite.zPosition = zPosition - 1
                 textSprite.setScale(finalScaleValue)
-                textSprite.position = self.bounds.center
+                textSprite.position = self.objectBounds.center
             }
         }
     }
@@ -699,7 +699,7 @@ open class SKTileObject: SKShapeNode, SKTiledObject {
         let uiScale: CGFloat = TiledGlobals.default.contentScale
 
         // the object's bounding rect
-        let textRect = self.bounds
+        let textRect = self.objectBounds
         let scaledRect = textRect * withScale
 
         // absolute size of the texture rectangle

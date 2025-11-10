@@ -672,7 +672,7 @@ extension SKTiledSceneCamera {
     /// Custom camera info description.
     override public var description: String {
         guard let scene = scene else { return "Camera: "}
-        let rect = CGRect(origin: scene.convert(position, from: self), size: bounds.size)
+        let rect = CGRect(origin: scene.convert(position, from: self), size: viewBounds.size)
         let uiScale = getContentScaleFactor()
         let scaleString = (uiScale > 1) ? ", scale: \(uiScale)" : ""
         let sizeString = "origin: \(Int(rect.origin.x)), \(Int(rect.origin.y)), size: \(Int(rect.size.width)) x \(Int(rect.size.height))\(scaleString)"
@@ -683,7 +683,7 @@ extension SKTiledSceneCamera {
     
     override public var debugDescription: String {
         let clampString = (zoomClamping != .none) ? ", clamp: \(zoomClamping.minimum)" : ""
-        return "Camera: \(bounds.roundTo()), zoom: \(zoom.roundTo())\(clampString)"
+        return "Camera: \(viewBounds.roundTo()), zoom: \(zoom.roundTo())\(clampString)"
     }
 }
 
